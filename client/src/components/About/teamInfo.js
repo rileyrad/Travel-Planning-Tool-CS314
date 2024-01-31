@@ -24,7 +24,7 @@ export const memberData = [
     },
     {
         name: "Zavion Madison",
-        bio: "Bio Here",
+        bio: "My name is Zavion Madison but I go by Zae and I am a 3rd year computer science major. Ultimately, my goal is to finish out my major and find my way in cybersecurity to chase new heights from there. My biggest achievement so far is how I graduated high school with my associate degree and placed myself ahead at university.",
         homeTown: "Colorado Springs, Colorado",
         imagePath: memberPic
     },

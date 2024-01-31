@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "57059c3e-ae10-4c7c-94a0-0709d5ecc9eb",
+		"_postman_id": "edd34e52-beb5-46cd-8500-e4df1da594c4",
 		"name": "distances",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "25276659-57059c3e-ae10-4c7c-94a0-0709d5ecc9eb"
+		"_uid": "25883428-edd34e52-beb5-46cd-8500-e4df1da594c4"
 	},
 	"item": [
 		{
@@ -12,7 +12,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "329f0df7-f0a5-4297-9a01-43960c3cc4d1",
+						"id": "64e36cff-a1e9-44d6-8feb-f3bb6b143a44",
 						"exec": [
 							"pm.test(\"Response is HTTP404 status\", () => {",
 							"    pm.response.to.have.status(404);",
@@ -23,7 +23,7 @@
 					}
 				}
 			],
-			"id": "19943e0e-3b2d-4952-a0db-84a5d0184e26",
+			"id": "03a80532-f19f-428a-a8e7-82cbc6ec8b33",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

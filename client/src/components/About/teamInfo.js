@@ -1,4 +1,5 @@
 import memberPic from "@static/images/Placeholder.jpg";
+import ethanPic from "@static/images/Ethan.jpg";
 import teamPic from "@static/images/PlaceholderTeam.jpg";
 
 export const teamData =
@@ -32,7 +33,7 @@ export const memberData = [
         name: "Ethan Greeff",
         bio: "I am a senior at CSU studying computer engineering, with a minor in computer science. I like climbing, biking, hiking, and pretty much any other outdoor recreation. After this semester, I'm hoping to have learned a little more about how projects function in industry.",
         homeTown: "Anchorage, Alaska",
-        imagePath: memberPic
+        imagePath: ethanPic
     },
     {
         name: "Team Member 5",

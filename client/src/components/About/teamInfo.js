@@ -30,7 +30,7 @@ export const memberData = [
     },
     {
         name: "Ethan Greeff",
-        bio: "Bio Here",
+        bio: "I am a senior at CSU studying computer engineering, with a minor in computer science. I like climbing, biking, hiking, and pretty much any other outdoor recreation. After this semester, I'm hoping to have learned a little more about how projects function in industry.",
         homeTown: "Anchorage, Alaska",
         imagePath: memberPic
     },

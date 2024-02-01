@@ -2,7 +2,7 @@ import memberPic from "@static/images/Placeholder.jpg";
 import ethanPic from "@static/images/Ethan.jpg";
 import brennerPic from "@static/images/BrennerLattin.jpg";
 import zaePic from "@static/images/Zae.jpg"
-import teamPic from "@static/images/PlaceholderTeam.jpg";
+import rileyPic from "@static/images/RileyPortrait.jpg";
 import teamPic from "@static/images/Crypto-v-1.jpg";
 
 
@@ -19,13 +19,13 @@ export const memberData = [
         name: "Riley Radici",
         bio: "My name is Riley and I'm a third-year CSU student studying computer science. My passions reside in coding, playing guitar, climbing, and skateboarding. My goal is to learn more about the industry through this class in order to have a better chance at getting an internship and a job outside of college.",
         homeTown: "San Diego, California",
-        imagePath: memberPic
+        imagePath: rileyPic
     },
     {
         name: "Brenner Lattin",
         bio: "I am a sophomore studying computer science and mathematics at CSU. Outside of school, I enjoy hiking, playing guitar, 3D modeling, and growing plants. I also spend my free time working with a small team on an indie game.",
         homeTown: "Fort Collins, Colorado",
-        imagePath: memberPic
+        imagePath: brennerPic
     },
     {
         name: "Zavion Madison",

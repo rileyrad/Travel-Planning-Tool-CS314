@@ -19,7 +19,7 @@ export const memberData = [
     },
     {
         name: "Brenner Lattin",
-        bio: "Bio Here",
+        bio: "I am a sophomore studying computer science and mathematics at CSU. Outside of school, I enjoy hiking, playing guitar, 3D modeling, and growing plants. I also spend my free time working with a small team on an indie game.",
         homeTown: "Fort Collins, Colorado",
         imagePath: memberPic
     },

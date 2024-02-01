@@ -1,7 +1,7 @@
 import memberPic from "@static/images/Placeholder.jpg";
 import ethanPic from "@static/images/Ethan.jpg";
 import brennerPic from "@static/images/BrennerLattin.jpg";
-import rileyPic from "@static/images/RileyPortrait.JPG";
+import rileyPic from "@static/images/RileyPortrait.jpg";
 import teamPic from "@static/images/PlaceholderTeam.jpg";
 
 export const teamData =

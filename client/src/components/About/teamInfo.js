@@ -35,10 +35,4 @@ export const memberData = [
         homeTown: "Anchorage, Alaska",
         imagePath: ethanPic
     },
-    {
-        name: "Team Member 5",
-        bio: "Bio Here",
-        homeTown: "Hometown",
-        imagePath: memberPic
-    },
 ];

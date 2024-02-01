@@ -13,7 +13,7 @@ export const teamData =
 export const memberData = [
     {
         name: "Riley Radici",
-        bio: "Bio Here",
+        bio: "My name is Riley and I'm a third-year CSU student studying computer science. My passions reside in coding, playing guitar, climbing, and skateboarding. My goal is to learn more about the industry through this class in order to have a better chance at getting an internship and a job outside of college.",
         homeTown: "San Diego, California",
         imagePath: memberPic
     },

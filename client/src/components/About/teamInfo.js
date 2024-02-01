@@ -3,6 +3,8 @@ import ethanPic from "@static/images/Ethan.jpg";
 import brennerPic from "@static/images/BrennerLattin.jpg";
 import zaePic from "@static/images/Zae.jpg"
 import teamPic from "@static/images/PlaceholderTeam.jpg";
+import teamPic from "@static/images/Crypto-v-1.jpg";
+
 
 export const teamData =
     {

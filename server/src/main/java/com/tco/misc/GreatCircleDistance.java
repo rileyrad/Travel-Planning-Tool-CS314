@@ -1,5 +1,5 @@
 package com.tco.misc;
 
 public interface GreatCircleDistance extends GeographicCoordinate {
-    public Double between(GeoCoord, GeoCoord, double);
+    public double between(GeographicCoordinate from, GeographicCoordinate to, double earthRadius);
 }

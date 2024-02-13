@@ -3,6 +3,7 @@ import ethanPic from "@static/images/Ethan.jpg";
 import brennerPic from "@static/images/BrennerLattin.jpg";
 import zaePic from "@static/images/Zae.jpg"
 import rileyPic from "@static/images/RileyPortrait.jpg";
+import gabePic from "@static/images/Gabe.jpg"
 import teamPic from "@static/images/Crypto-v-1.jpg";
 
 
@@ -38,5 +39,11 @@ export const memberData = [
         bio: "I am a senior at CSU studying computer engineering, with a minor in computer science. I like climbing, biking, hiking, and pretty much any other outdoor recreation. After this semester, I'm hoping to have learned a little more about how projects function in industry.",
         homeTown: "Anchorage, Alaska",
         imagePath: ethanPic
+    },
+    {
+        name: "Gabe Knudtson",
+        bio: "I am experienced with programming in Java, and Python and familiar with common Git and GitHub practices. In this course I hope to learn a lot about collaboration in an industry environment. In my free time I enjoy snowboarding, mountain biking and gaming with my friends. An interesting fact about me is that I have been a snowboard instructor for the past 7 years.",
+        homeTown: "Breckenridge, CO",
+        imagePath: gabePic
     },
 ];

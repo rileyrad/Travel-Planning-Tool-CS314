@@ -29,7 +29,7 @@ public class DistancesRequest extends Request {
     private Distances buildDistanceList() {
         Distances distances = new Distances();
 
-        for (int fromIndex = 0; fromIndex <= places.size(); fromIndex++) {
+        for (int fromIndex = 0; fromIndex < places.size(); fromIndex++) {
             int toIndex = (fromIndex + 1) % places.size();
 
             Place fromPlace = places.get(fromIndex);
@@ -52,5 +52,21 @@ public class DistancesRequest extends Request {
             calculator = new VincentyDistance();
         }
     }
+
+    /* The following methods exist only for testing purposes and are not used
+     during normal execution, including the constructor. */
+
+     public DistancesRequest() {
+        this.requestType = "distances";
+        places = new Places();
+     }
+
+     public GreatCircleDistance getDistanceCalculator() {
+        return calculator;
+     }
+
+     public Distances getDistances() {
+        return distances;
+     }
 
 }

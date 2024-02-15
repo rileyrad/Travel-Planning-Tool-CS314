@@ -13,11 +13,16 @@ class Place extends LinkedHashMap<String,String> implements GeographicCoordinate
         this.put("longitude", longitude);
     }
     
-    public Double lonRadians() { return 0.0; }
+    public Double lonRadians() { 
+        return stringToRadian(this.get("longitude")); 
+    }
     
     public Double latRadians() { 
-        String latitudeStr = this.get("latitude");
-        Double latitudeDouble = Double.parseDouble(latitudeStr);
-        return toRadians(latitudeDouble); 
+        return stringToRadian(this.get("latitude"));
+    }
+
+    private Double stringToRadian(String latLon){
+        Double toDouble = Double.parseDouble(latLon);
+        return toRadians(toDouble);
     }
 }

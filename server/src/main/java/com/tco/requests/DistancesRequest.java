@@ -32,4 +32,8 @@ public class DistancesRequest extends Request {
         return distances;
     }
 
+    private void setDistanceCalculator() {
+        // TODO
+    }
+
 }

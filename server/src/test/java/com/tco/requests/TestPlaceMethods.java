@@ -18,4 +18,13 @@ public class TestPlaceMethods {
         
         assertTrue(Math.abs(idealRadians - convertedRadians) <= doubleComparisonPrecision);
     }
+
+    @Test
+    @DisplayName("greeff: Test lonRadians Conversion")
+    public void testLonRadians(){
+        Place place = new Place("0","40.1");
+        Double idealRadians = 0.699877;
+        Double convertedRadians= place.lonRadians();
+        assertTrue(Math.abs(idealRadians - convertedRadians) <= doubleComparisonPrecision);
+    }
 }

@@ -21,7 +21,9 @@ public class DistancesRequest extends Request {
     
     @Override
     public void buildResponse() {
-        
+        setDistanceCalculator();
+        distances = buildDistanceList();
+        log.trace("buildResponse -> {}", this);
     }
 
     private Distances buildDistanceList() {

@@ -33,7 +33,13 @@ public class DistancesRequest extends Request {
     }
 
     private void setDistanceCalculator() {
-        // TODO
+        if ("havesine".equals(formula)) {
+            calculator = new HaversineDistance();
+        } else if ("cosines".equals(formula)) {
+            calculator = new CosinesDistance();
+        } else {
+            calculator = new VincentyDistance();
+        }
     }
 
 }

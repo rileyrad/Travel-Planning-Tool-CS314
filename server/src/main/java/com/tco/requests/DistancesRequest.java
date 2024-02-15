@@ -27,7 +27,16 @@ public class DistancesRequest extends Request {
     private Distances buildDistanceList() {
         Distances distances = new Distances();
 
-        // TODO
+        for (int fromIndex = 0; fromIndex <= places.size(); fromIndex++) {
+            int toIndex = (fromIndex + 1) % places.size();
+
+            Place fromPlace = places.get(fromIndex);
+            Place toPlace = places.get(toIndex);
+
+            Long distance = calculator.between(fromPlace, toPlace, earthRadius);
+            
+            distances.add(distance);
+        }
 
         return distances;
     }

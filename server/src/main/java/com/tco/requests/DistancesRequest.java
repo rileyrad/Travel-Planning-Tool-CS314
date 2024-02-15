@@ -24,4 +24,12 @@ public class DistancesRequest extends Request {
         
     }
 
+    private Distances buildDistanceList() {
+        Distances distances = new Distances();
+
+        // TODO
+
+        return distances;
+    }
+
 }

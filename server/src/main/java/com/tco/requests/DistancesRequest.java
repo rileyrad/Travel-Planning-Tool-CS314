@@ -10,6 +10,15 @@ import org.slf4j.LoggerFactory;
 
 public class DistancesRequest extends Request {
     
+    private static final transient Logger log = LoggerFactory.getLogger
+        (DistancesRequest.class);
+
+    private Places places;
+    private Double earthRadius;
+    private String formula;
+    private GreatCircleDistance calculator;
+    private Distances distances;
+    
     @Override
     public void buildResponse() {
         

@@ -1,9 +1,9 @@
 package com.tco.requests;
 
 import com.tco.misc.GreatCircleDistance;
-import com.tco.misc.VincentyCalculator;
-import com.tco.misc.CosineCalculator;
-import com.tco.misc.HaversineCalculator;
+import com.tco.misc.VincentyDistance;
+import com.tco.misc.CosinesDistance;
+import com.tco.misc.HaversineDistance;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

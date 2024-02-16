@@ -28,8 +28,7 @@ public class DistancesRequest extends Request {
 
     private Distances buildDistanceList() {
         Distances distances = new Distances();
-
-        if (places.size() == 0) return distances;
+        
         for (int fromIndex = 0; fromIndex < places.size(); fromIndex++) {
             int toIndex = (fromIndex + 1) % places.size();
 

@@ -2,11 +2,14 @@ package com.tco.requests;
 
 import com.tco.misc.GeographicCoordinate;
 
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import static java.lang.Math.toRadians;
 
 
-class Place extends LinkedHashMap<String,String> implements GeographicCoordinate {
+class Place extends HashMap<String,String> implements GeographicCoordinate, Map<String, String> {
+
+    public Place() {}
     
     public Place(String latitude, String longitude) {
         this.put("latitude" , latitude);

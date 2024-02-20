@@ -3,6 +3,8 @@ import java.lang.Math;
 
 public class HaversineDistance implements GreatCircleDistance {
     
+    public HaversineDistance() {}
+
     public Long between(GeographicCoordinate from, GeographicCoordinate to, double earthRadius) {
             return 0L;
     }

@@ -11,9 +11,9 @@ public class TestDistanceFormulas {
     @Test
     @DisplayName("greeff: Test Haversine Formula")
     public void testHaversineFormula(){
-        Double earthRadius = 100;
+        Double earthRadius = 100.0;
         Place from = new Place("40.1","40.1");
         Place to = new Place("80.2","80.2");
-        assertTrue(1 == haversine.between(from.toRadians(),to.toRadians(),earthRadius));
+        assertTrue(74 == haversine.between(from,to,earthRadius));
     }
 }

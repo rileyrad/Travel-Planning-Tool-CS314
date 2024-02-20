@@ -7,7 +7,7 @@ import java.util.Map;
 import static java.lang.Math.toRadians;
 
 
-class Place extends HashMap<String,String> implements GeographicCoordinate, Map<String, String> {
+public class Place extends HashMap<String,String> implements GeographicCoordinate, Map<String, String> {
 
     public Place() {}
     

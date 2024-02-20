@@ -44,7 +44,7 @@ public class DistancesRequest extends Request {
     }
 
     private void setDistanceCalculator() {
-        if ("havesine".equals(formula)) {
+        if ("haversine".equals(formula)) {
             calculator = new HaversineDistance();
         } else if ("cosines".equals(formula)) {
             calculator = new CosinesDistance();

@@ -7,7 +7,15 @@ public class VincentyDistance implements GreatCircleDistance{
     public VincentyDistance() {}
     
     public Long between(GeographicCoordinate from, GeographicCoordinate to, double earthRadius){
-        return 0L;
+        double fromLatitude = from.latRadians();
+        double toLatitude = to.latRadians();
+        double longitudeDifference = from.lonRadians() - to.lonRadians();
+
+        double numerator = computeNumerator(fromLatitude,toLatitude,longitudeDifference);
+        double denominator = computeDenominator(fromLatitude,toLatitude,longitudeDifference);
+        Long distance = (long) (earthRadius * Math.atan2(numerator,denominator));
+
+        return distance;
     }
 
     private double computeNumerator(double fromLatitude, double toLatitude, double longitudeDifference) {

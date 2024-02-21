@@ -59,6 +59,7 @@ public class DistancesRequest extends Request {
      public DistancesRequest() {
         this.requestType = "distances";
         places = new Places();
+        earthRadius = 3959.0;
      }
 
      public GreatCircleDistance getDistanceCalculator() {
@@ -69,4 +70,19 @@ public class DistancesRequest extends Request {
         return distances;
      }
 
+     public void addPlace(Place place) {
+        places.add(place);
+     }
+
+     public void setFormula(String formula) {
+        this.formula = formula;
+     }
+
+     public Double getRadius() {
+        return earthRadius;
+     }
+
+     public void setRadius(Double earthRadius) {
+        this.earthRadius = earthRadius;
+     }
 }

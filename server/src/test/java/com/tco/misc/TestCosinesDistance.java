@@ -19,7 +19,7 @@ public class TestCosinesDistance {
     @BeforeEach
     public void setup() {
         testLocations = Arrays.asList(new Geo(-90, 0), new Geo(-90, -180), new Geo(90, 0), new Geo(25.314, 25.314));
-        expectedDistances = Arrays.asList(0L, 20037L, 7200L);
+        expectedDistances = Arrays.asList(0L, 20038L, 7201L);
         earthRadius = 6378.14;
         cosinesCalculator = new CosinesDistance();
     }

@@ -9,10 +9,11 @@ public class CosinesDistance implements GreatCircleDistance {
         double to_lon = to.lonRadians();
         double to_lat = to.latRadians();
 
-        Long distance = (long) (earthRadius * Math.acos(Math.sin(from_lat) * Math.sin(to_lat) + 
-                Math.cos(from_lat) * Math.cos(to_lat) * Math.cos(from_lon - to_lon)));
+        double distance = earthRadius * Math.acos(Math.sin(from_lat) * Math.sin(to_lat) + 
+                Math.cos(from_lat) * Math.cos(to_lat) * Math.cos(from_lon - to_lon));
+        distance = Math.round(distance);
                 
-        return distance;
+        return (long) distance;
     }
 
 

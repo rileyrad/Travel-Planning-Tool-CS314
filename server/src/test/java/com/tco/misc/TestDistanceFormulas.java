@@ -14,6 +14,6 @@ public class TestDistanceFormulas {
         Double earthRadius = 100.0;
         Place from = new Place("40.1","40.1");
         Place to = new Place("80.2","80.2");
-        assertTrue(74 == haversine.between(from,to,earthRadius));
+        assertTrue(75 == haversine.between(from,to,earthRadius));
     }
 }

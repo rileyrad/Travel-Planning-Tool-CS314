@@ -14,8 +14,8 @@ public class HaversineDistance implements GreatCircleDistance {
         centralAngleCalculation = centralAngleCalculation * sinSquaredOfDifferenceHalved(fromLongitude,toLongitude);
         centralAngleCalculation = centralAngleCalculation + sinSquaredOfDifferenceHalved(fromLatitude,toLatitude);
         centralAngleCalculation = 2 * Math.asin(Math.sqrt(centralAngleCalculation));
-        Long distanceBetween = (long) (centralAngleCalculation * earthRadius);
-        return distanceBetween;
+        double distanceBetween = Math.round(centralAngleCalculation * earthRadius);
+        return (long) distanceBetween;
     }
 
     private Double sinSquaredOfDifferenceHalved(Double subtractFrom, Double subtract){

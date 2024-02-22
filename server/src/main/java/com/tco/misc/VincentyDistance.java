@@ -13,9 +13,9 @@ public class VincentyDistance implements GreatCircleDistance{
 
         double numerator = computeNumerator(fromLatitude,toLatitude,longitudeDifference);
         double denominator = computeDenominator(fromLatitude,toLatitude,longitudeDifference);
-        Long distance = (long) (earthRadius * Math.atan2(numerator,denominator));
+        double distance = Math.round(earthRadius * Math.atan2(numerator,denominator));
 
-        return distance;
+        return (long) distance;
     }
 
     private double computeNumerator(double fromLatitude, double toLatitude, double longitudeDifference) {

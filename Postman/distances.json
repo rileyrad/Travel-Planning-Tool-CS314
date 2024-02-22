@@ -51,6 +51,266 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "rileyr3: Distance Min Radius No Places",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"requestType is 'distances'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.requestType).to.equal(\"distances\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"earthRadius is '1'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.earthRadius).to.equal(1.0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"places test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.places).to.not.equal(null);\r",
+							"    pm.expect(jsonData.places.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"distances test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.distances).to.not.equal(null);\r",
+							"    pm.expect(jsonData.distances.length).to.equal(0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"distances\",\r\n    \"places\": [],\r\n    \"earthRadius\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/distances",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"distances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rileyr3: Distance One Place",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"requestType is 'distances'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.requestType).to.equal(\"distances\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"earthRadius is '1'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.earthRadius).to.equal(1.0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"places test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.places).to.not.equal(null);\r",
+							"    pm.expect(jsonData.places.length).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"distances test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.distances).to.not.equal(null);\r",
+							"    pm.expect(jsonData.distances.length).to.equal(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"distances\",\r\n    \"places\": [\r\n        {\r\n            \"name\": \"Lycksele, Sweden\", \r\n            \"latitude\": \"64.5961\", \r\n            \"longitude\": \"18.6770\"\r\n        }\r\n    ],\r\n    \"earthRadius\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/distances",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"distances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rileyr3: Distance Two Places",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"requestType is 'distances'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.requestType).to.equal(\"distances\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"earthRadius is '1'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.earthRadius).to.equal(1000.0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"places test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.places).to.not.equal(null);\r",
+							"    pm.expect(jsonData.places.length).to.equal(2);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"distances test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.distances).to.not.equal(null);\r",
+							"    pm.expect(jsonData.distances.length).to.equal(2);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"distances\",\r\n    \"places\": [\r\n        {\r\n            \"name\": \"Lycksele, Sweden\", \r\n            \"latitude\": \"64.5961\", \r\n            \"longitude\": \"18.6770\"\r\n        },\r\n        {\r\n            \"name\": \"San Diego, USA\", \r\n            \"latitude\": \"32.7188\", \r\n            \"longitude\": \"-117.1672\"\r\n        }\r\n    ],\r\n    \"earthRadius\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/distances",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"distances"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "rileyr3: Distance Three Places",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"requestType is 'distances'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.requestType).to.equal(\"distances\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"earthRadius is '1'\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.earthRadius).to.equal(1000.0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"places test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.places).to.not.equal(null);\r",
+							"    pm.expect(jsonData.places.length).to.equal(3);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"distances test\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.distances).to.not.equal(null);\r",
+							"    pm.expect(jsonData.distances.length).to.equal(3);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"requestType\": \"distances\",\r\n    \"places\": [\r\n        {\r\n            \"name\": \"Lycksele, Sweden\", \r\n            \"latitude\": \"64.5961\", \r\n            \"longitude\": \"18.6770\"\r\n        },\r\n        {\r\n            \"name\": \"San Diego, USA\", \r\n            \"latitude\": \"32.7188\", \r\n            \"longitude\": \"-117.1672\"\r\n        },\r\n        {\r\n            \"name\": \"Durban, South Africa\", \r\n            \"latitude\": \"-29.8711\", \r\n            \"longitude\": \"31.0001\"\r\n        }\r\n    ],\r\n    \"earthRadius\": 1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/distances",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"distances"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

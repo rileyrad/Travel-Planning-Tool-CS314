@@ -1,6 +1,6 @@
 package com.tco.misc;
 
-public class CosinesDistance implements GreatCircleDistance {
+public class CosinesDistance implements DistanceCalculator {
     public CosinesDistance(){};
 
     public Long between(GeographicCoordinate from, GeographicCoordinate to, double earthRadius) {

@@ -1,6 +1,6 @@
 package com.tco.requests;
 
-import com.tco.misc.GreatCircleDistance;
+import com.tco.misc.DistanceCalculator;
 import com.tco.misc.VincentyDistance;
 import com.tco.misc.CosinesDistance;
 import com.tco.misc.HaversineDistance;
@@ -13,7 +13,7 @@ public class DistancesRequest extends Request {
     private static final transient Logger log = LoggerFactory.getLogger
         (DistancesRequest.class);
 
-    private transient GreatCircleDistance calculator;
+    private transient DistanceCalculator calculator;
     private Places places;
     private Double earthRadius;
     private String formula;
@@ -62,7 +62,7 @@ public class DistancesRequest extends Request {
         earthRadius = 3959.0;
      }
 
-     public GreatCircleDistance getDistanceCalculator() {
+     public DistanceCalculator getDistanceCalculator() {
         return calculator;
      }
 

@@ -2,7 +2,7 @@ package com.tco.misc;
 
 import java.lang.Math;
 
-public class VincentyDistance implements GreatCircleDistance{
+public class VincentyDistance implements DistanceCalculator{
     
     public VincentyDistance() {}
     

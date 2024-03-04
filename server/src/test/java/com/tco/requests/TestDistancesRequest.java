@@ -1,6 +1,6 @@
 package com.tco.requests;
 
-import com.tco.misc.GreatCircleDistance;
+import com.tco.misc.DistanceCalculator;
 import com.tco.misc.VincentyDistance;
 import com.tco.misc.CosinesDistance;
 import com.tco.misc.HaversineDistance;
@@ -38,7 +38,7 @@ public class TestDistancesRequest {
     @Test
     @DisplayName("bodorol: Distance calculator type is \"vincenty\"")
     public void testFormulaNotSpecified() {
-        GreatCircleDistance distanceCalculator = dist.getDistanceCalculator();
+        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof VincentyDistance);
     }
 
@@ -48,7 +48,7 @@ public class TestDistancesRequest {
         dist.setFormula("chord");
         dist.buildResponse();
 
-        GreatCircleDistance distanceCalculator = dist.getDistanceCalculator();
+        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof VincentyDistance);
     }
 
@@ -58,7 +58,7 @@ public class TestDistancesRequest {
         dist.setFormula("vincenty");
         dist.buildResponse();
 
-        GreatCircleDistance distanceCalculator = dist.getDistanceCalculator();
+        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof VincentyDistance);
     }
 
@@ -68,7 +68,7 @@ public class TestDistancesRequest {
         dist.setFormula("haversine");
         dist.buildResponse();
 
-        GreatCircleDistance distanceCalculator = dist.getDistanceCalculator();
+        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof HaversineDistance);
     }
 
@@ -78,7 +78,7 @@ public class TestDistancesRequest {
         dist.setFormula("cosines");
         dist.buildResponse();
 
-        GreatCircleDistance distanceCalculator = dist.getDistanceCalculator();
+        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof CosinesDistance);
     }
 

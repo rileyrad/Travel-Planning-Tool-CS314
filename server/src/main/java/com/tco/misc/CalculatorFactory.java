@@ -1,5 +1,5 @@
 package com.tco.misc;
 
-public class CalculatorFactory {
+public abstract class CalculatorFactory {
     
 }

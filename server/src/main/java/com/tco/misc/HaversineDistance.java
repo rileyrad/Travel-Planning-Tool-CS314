@@ -1,7 +1,7 @@
 package com.tco.misc;
 import java.lang.Math;
 
-public class HaversineDistance implements GreatCircleDistance {
+public class HaversineDistance implements DistanceCalculator {
     
     public HaversineDistance() {}
 

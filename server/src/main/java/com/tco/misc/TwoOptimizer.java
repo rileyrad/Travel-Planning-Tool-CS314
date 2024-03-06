@@ -1,4 +1,4 @@
-package com.tco.mics;
+package com.tco.misc;
 
 public class TwoOptimizer extends TourOptimizer{
     

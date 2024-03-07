@@ -40,5 +40,25 @@ public abstract class TourOptimizer {
 
         return distances;
     }
+
+    private int getNearestNeighborIndex(int[] tour, int[][] distances, int startIndex, int unusedIndex) {
+        int startCity = tour[startIndex];
+        int nextCity = tour[unusedIndex];
+
+        int nearestNeighborIndex = unusedIndex;
+        long shortestDistance = distances[startCity][nextCity];
+
+        for (int nextIndex = unusedIndex + 1; nextIndex < tour.length; nextIndex++) {
+            nextCity = tour[nextIndex];
+            long nextDistance = distances[startCity][nextCity];
+
+            if (nextDistance < shortestDistance) {
+                shortestDistance = nextDistance;
+                nearestNeighborIndex = nextIndex;
+            }
+        }
+
+        return nearestNeighborIndex;
+    }
     
 }

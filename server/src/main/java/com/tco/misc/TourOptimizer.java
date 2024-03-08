@@ -12,6 +12,10 @@ public abstract class TourOptimizer {
     private long[][] distances;
     private int unusedIndex;
 
+    public Places construct(Places places, double radius, String formula, double response) {
+        return null;
+    }
+
     public void improve() {}
 
     private void initializeTour() {

@@ -5,24 +5,29 @@ import com.tco.requests.Places;
 
 public abstract class TourOptimizer {
 
+    private Places places;
+    private double radius;
+    private String formula;
+    private int[] tour;
+    private long[][] distances;
+    private int unusedIndex;
+
     public Places construct(Places places, double radius, String formula, double response) {
         return null;
     }
 
     public void improve() {}
 
-    private int[] initializeTour(Places places) {
-        int[] tour = new int[places.size()];
+    private void initializeTour() {
+        tour = new int[places.size()];
 
         for (int i = 0; i < places.size(); i++) {
             tour[i] = i;
         }
-
-        return tour;
     }
 
-    private long[][] initializeDistances(Places places, String formula, double radius) {
-        long[][] distances = new long[places.size()][places.size()];
+    private void initializeDistances() {
+        distances = new long[places.size()][places.size()];
 
         DistanceCalculator calculator = CalculatorFactory.get(formula);
 
@@ -37,11 +42,9 @@ public abstract class TourOptimizer {
                 distances[toIndex][fromIndex] = distance;
             }
         }
-
-        return distances;
     }
 
-    private int getNearestNeighborIndex(int[] tour, int[][] distances, int startIndex, int unusedIndex) {
+    private int getNearestNeighborIndex(int startIndex) {
         int startCity = tour[startIndex];
         int nextCity = tour[unusedIndex];
 

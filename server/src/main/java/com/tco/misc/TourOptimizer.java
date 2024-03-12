@@ -10,7 +10,6 @@ public abstract class TourOptimizer {
     private String formula;
     private int[] tour;
     private long[][] distances;
-    private int unusedIndex;
 
     public Places construct(Places places, double radius, String formula, double response) {
         return null;
@@ -44,16 +43,20 @@ public abstract class TourOptimizer {
         }
     }
 
+    private void nearestNeighbor() {		
+        for (int unusedIndex = 1; unusedIndex < places.length; unusedIndex++) {
+            int nearestNeighborIndex = getNearestNeighborIndex(unusedIndex - 1);
+            swapElements(unusedIndex, nearestNeighborIndex);
+        }
+    }
+
     private int getNearestNeighborIndex(int startIndex) {
-        int startCity = tour[startIndex];
-        int nextCity = tour[unusedIndex];
+        int nearestNeighborIndex = startIndex + 1;
+        long shortestDistance = getDistance(startIndex, nearestNeighborIndex);
 
-        int nearestNeighborIndex = unusedIndex;
-        long shortestDistance = distances[startCity][nextCity];
+        for (int nextIndex = nearestNeighborIndex + 1; nextIndex < tour.length; nextIndex++) {
 
-        for (int nextIndex = unusedIndex + 1; nextIndex < tour.length; nextIndex++) {
-            nextCity = tour[nextIndex];
-            long nextDistance = distances[startCity][nextCity];
+            long nextDistance = getDistance(startIndex, nextIndex);
 
             if (nextDistance < shortestDistance) {
                 shortestDistance = nextDistance;
@@ -63,5 +66,18 @@ public abstract class TourOptimizer {
 
         return nearestNeighborIndex;
     }
-    
+
+    private void swapElements(int index1, int index2) {
+        int temp = tour[index1];
+        tour[index1] = tour[index2];
+        tour[index2] = temp;
+    }
+	
+	private long getDistance(int index1, int index2) {
+		int firstCity = tour[index1];
+		int nextCity = tour[index2];
+		
+		return distances[firstCity][nextCity];
+	}
+
 }

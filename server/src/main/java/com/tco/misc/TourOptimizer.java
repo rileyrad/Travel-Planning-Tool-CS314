@@ -11,7 +11,7 @@ public abstract class TourOptimizer {
     private int[] tour;
     private long[][] distances;
 
-    public Places construct(Places places, double radius, String formula, double response) {
+    public Places construct(Places places, double radius, String formula, double response) throws BadRequestException {
         return null;
     }
 
@@ -25,7 +25,7 @@ public abstract class TourOptimizer {
         }
     }
 
-    private void initializeDistances() {
+    private void initializeDistances() throws BadRequestException {
         distances = new long[places.size()][places.size()];
 
         DistanceCalculator calculator = CalculatorFactory.get(formula);

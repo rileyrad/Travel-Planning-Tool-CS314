@@ -46,13 +46,6 @@ public class DistancesRequest extends Request {
     }
 
     private void setDistanceCalculator() throws BadRequestException{
-        /*if ("haversine".equals(formula)) {
-            calculator = new HaversineDistance();
-        } else if ("cosines".equals(formula)) {
-            calculator = new CosinesDistance();
-        } else {
-            calculator = new VincentyDistance();
-        }*/
         calculator = CalculatorFactory.get(formula);
     }
 

@@ -44,7 +44,7 @@ public abstract class TourOptimizer {
     }
 
     private void nearestNeighbor() {		
-        for (int unusedIndex = 1; unusedIndex < places.length; unusedIndex++) {
+        for (int unusedIndex = 1; unusedIndex < places.size(); unusedIndex++) {
             int nearestNeighborIndex = getNearestNeighborIndex(unusedIndex - 1);
             swapElements(unusedIndex, nearestNeighborIndex);
         }

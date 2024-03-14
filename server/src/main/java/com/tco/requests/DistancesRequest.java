@@ -4,6 +4,8 @@ import com.tco.misc.DistanceCalculator;
 import com.tco.misc.VincentyDistance;
 import com.tco.misc.CosinesDistance;
 import com.tco.misc.HaversineDistance;
+import com.tco.misc.CalculatorFactory;
+import com.tco.misc.BadRequestException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +22,7 @@ public class DistancesRequest extends Request {
     private Distances distances;
     
     @Override
-    public void buildResponse() {
+    public void buildResponse() throws BadRequestException{
         setDistanceCalculator();
         distances = buildDistanceList();
         log.trace("buildResponse -> {}", this);
@@ -43,14 +45,8 @@ public class DistancesRequest extends Request {
         return distances;
     }
 
-    private void setDistanceCalculator() {
-        if ("haversine".equals(formula)) {
-            calculator = new HaversineDistance();
-        } else if ("cosines".equals(formula)) {
-            calculator = new CosinesDistance();
-        } else {
-            calculator = new VincentyDistance();
-        }
+    private void setDistanceCalculator() throws BadRequestException{
+        calculator = CalculatorFactory.get(formula);
     }
 
     /* The following methods exist only for testing purposes and are not used

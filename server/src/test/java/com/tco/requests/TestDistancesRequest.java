@@ -4,6 +4,7 @@ import com.tco.misc.DistanceCalculator;
 import com.tco.misc.VincentyDistance;
 import com.tco.misc.CosinesDistance;
 import com.tco.misc.HaversineDistance;
+import com.tco.misc.BadRequestException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TestDistancesRequest {
 
@@ -25,7 +27,10 @@ public class TestDistancesRequest {
     @BeforeEach
     public void createDistancesForTestCases() {
         dist = new DistancesRequest();
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
     }
 
     @Test
@@ -46,17 +51,19 @@ public class TestDistancesRequest {
     @DisplayName("bodorol: Distance calculator type is \"vincenty\"")
     public void testFormulaNotSupported() {
         dist.setFormula("chord");
-        dist.buildResponse();
-
-        DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
-        assertTrue(distanceCalculator instanceof VincentyDistance);
+        Exception exception = assertThrows(BadRequestException.class, () -> {
+            dist.buildResponse();
+        });
     }
 
     @Test
     @DisplayName("bodorol: Distance calculator type is \"vincenty\"")
     public void testFormulaVincenty() {
         dist.setFormula("vincenty");
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof VincentyDistance);
@@ -66,7 +73,10 @@ public class TestDistancesRequest {
     @DisplayName("bodorol: Distance calculator type is \"haversine\"")
     public void testFormulaHaversine() {
         dist.setFormula("haversine");
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof HaversineDistance);
@@ -76,7 +86,10 @@ public class TestDistancesRequest {
     @DisplayName("bodorol: Distance calculator type is \"cosines\"")
     public void testFormulaCosines() {
         dist.setFormula("cosines");
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         DistanceCalculator distanceCalculator = dist.getDistanceCalculator();
         assertTrue(distanceCalculator instanceof CosinesDistance);
@@ -94,7 +107,10 @@ public class TestDistancesRequest {
     public void testDistancesOnePlace() {
         dist.addPlace(northPole);
 
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         Distances distances = dist.getDistances();
         assertEquals(1, distances.size());
@@ -108,7 +124,10 @@ public class TestDistancesRequest {
         dist.addPlace(northPole);
         dist.addPlace(southPole);
 
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         Distances distances = dist.getDistances();
         assertEquals(2, distances.size());
@@ -125,7 +144,10 @@ public class TestDistancesRequest {
         dist.addPlace(equatorWest);
         dist.addPlace(equatorEast);
 
-        dist.buildResponse();
+        try{
+            dist.buildResponse();
+        }catch (BadRequestException e){
+        }
 
         Distances distances = dist.getDistances();
         assertEquals(5, distances.size());

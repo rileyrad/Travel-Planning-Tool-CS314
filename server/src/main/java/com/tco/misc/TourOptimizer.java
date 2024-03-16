@@ -80,4 +80,59 @@ public abstract class TourOptimizer {
 		return distances[firstCity][nextCity];
 	}
 
+    /* The following methods exist only for testing purposes and are not used
+     during normal execution, including the constructor. */
+
+     public void setRadius(double radius) {
+        this.radius = radius;
+     }
+
+     public void setPlaces(Places places) {
+        this.places = places;
+     }
+
+     public long[][] getDistances() {
+        return distances;
+     }
+
+     public int[] getTour() {
+        return tour;
+     }
+
+     public Place getPlaceFromPlaces(int index) {
+        return places.get(index);
+     }
+
+     public Place getPlaceFromTour(int index) {
+        int placeIndex = tour[index];
+        return places.get(placeIndex);
+     }
+
+     public void initializeTourTest() {
+        initializeTour();
+     }
+
+     public void initializeDistancesTest() {
+        try {
+            initializeDistances();
+        } catch (Exception e) {
+
+        }
+     }
+
+     public long getDistanceTest(int index1, int index2) {
+        return getDistance(index1, index2);
+     }
+
+     public void nearestNeighborTest() {
+        nearestNeighbor();
+     }
+
+     public void swapElementsTest(int index1, int index2) {
+        swapElements(index1, index2);
+     }
+
+     public int getNearestNeighborIndexTest(int index) {
+        return getNearestNeighborIndex(index);
+     }
 }

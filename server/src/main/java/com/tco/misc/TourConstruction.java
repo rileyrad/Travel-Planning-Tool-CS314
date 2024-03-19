@@ -43,6 +43,34 @@ public abstract class TourConstruction {
         }
     }
 
+    private long getTourDistance() {
+        long totalDistance = 0;
+
+        for (int i = 0; i < tour.length - 1; i++) {
+            totalDistance += getDistance(i, i + 1);
+            System.out.println("Total: " + totalDistance);
+        }
+
+        totalDistance += getDistance(tour.length - 1, 0);
+
+        return totalDistance;
+    }
+
+    private void setTourStart(int placesIndex) {
+        int tourIndex = getTourIndex(placesIndex);
+        swapElements(0, placesIndex);
+    }
+
+    private int getTourIndex(int placesIndex) {
+        for (int i = 0; i < tour.length; i++) {
+            if (tour[i] == placesIndex) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     private void nearestNeighbor() {		
         for (int unusedIndex = 1; unusedIndex < places.size(); unusedIndex++) {
             int nearestNeighborIndex = getNearestNeighborIndex(unusedIndex - 1);
@@ -134,5 +162,17 @@ public abstract class TourConstruction {
 
      public int getNearestNeighborIndexTest(int index) {
         return getNearestNeighborIndex(index);
+     }
+
+     public long getTourDistanceTest() {
+        return getTourDistance();
+     }
+
+     public int getTourIndexTest(int placesIndex) {
+        return getTourIndex(placesIndex);
+     }
+
+     public void setTourStartTest(int placesIndex) {
+        setTourStart(placesIndex);
      }
 }

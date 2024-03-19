@@ -1,5 +1,5 @@
 package com.tco.misc;
 
-public class OneOptimizer extends TourOptimizer {
+public class OneOptimizer extends TourConstruction {
     
 }

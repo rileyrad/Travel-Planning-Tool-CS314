@@ -3,7 +3,7 @@ package com.tco.misc;
 import com.tco.requests.Place;
 import com.tco.requests.Places;
 
-public abstract class TourOptimizer {
+public abstract class TourConstruction {
 
     private Places places;
     private double radius;

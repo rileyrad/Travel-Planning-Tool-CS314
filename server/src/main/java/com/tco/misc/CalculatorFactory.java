@@ -1,20 +1,18 @@
 package com.tco.misc;
 
-public abstract class CalculatorFactory {
-
-    abstract public DistanceCalculator create();
+public class CalculatorFactory {
     
-    static public DistanceCalculator get(String formula) throws BadRequestException{
-        if("haversine".equals(formula)){
-            HaversineCreator haversine = new HaversineCreator();
-            return haversine.create();
-        } else if("cosines".equals(formula)){
-            CosinesCreator cosines = new CosinesCreator();
-            return cosines.create();
-        } else if(("vincenty".equals(formula)) || null == formula){
-            VincentyCreator vincenty = new VincentyCreator();
-            return vincenty.create();
-        } else{
+    static public DistanceCalculator get(String formula) throws BadRequestException {
+        if("haversine".equals(formula)) {
+            HaversineDistance haversine = new HaversineDistance();
+            return haversine;
+        } else if("cosines".equals(formula)) {
+            CosinesDistance cosines = new CosinesDistance();
+            return cosines;
+        } else if(("vincenty".equals(formula)) || null == formula) {
+            VincentyDistance vincenty = new VincentyDistance();
+            return vincenty;
+        } else {
             throw new BadRequestException();
         }
     }

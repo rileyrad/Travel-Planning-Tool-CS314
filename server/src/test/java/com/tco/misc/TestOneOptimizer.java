@@ -201,7 +201,7 @@ public class TestOneOptimizer {
 
         long tourLength = oneOpt.getTourDistanceTest();
 
-        assertEquals(L, tourLength);
+        assertEquals(6L, tourLength);
     }   
 
     @Test

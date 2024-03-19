@@ -5,7 +5,7 @@ import com.tco.misc.NoOptimizer;
 import com.tco.misc.OneOptimizer;
 import com.tco.misc.TwoOptimizer;
 import com.tco.misc.ThreeOptimizer;
-import com.tco.misc.TourOptimizer;
+import com.tco.misc.TourConstruction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

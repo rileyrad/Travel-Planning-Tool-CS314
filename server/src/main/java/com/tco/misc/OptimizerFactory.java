@@ -8,7 +8,14 @@ public class OptimizerFactory extends TourConstruction {
     private static final transient Logger log = LoggerFactory.getLogger(OptimizerFactory.class);
 
     public TourConstruction get(int N, Double response) {
-        TourConstruction optimizer = new NoOptimizer();
+        TourConstruction optimizer;
+        if (n >= 500 || n == 0 || response == 0) {
+            optimizer = new NoOptimizer();
+            log.info("NoOptimizer was selected.");
+        } else {
+            optimizer = new OneOptimizer();
+            log.info("OneOptimizer was selected.");
+        }
         return optimizer;
     }
 }

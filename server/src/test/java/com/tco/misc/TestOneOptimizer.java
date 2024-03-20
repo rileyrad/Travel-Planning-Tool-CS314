@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class TestOneOptimizer {
 
@@ -185,5 +186,76 @@ public class TestOneOptimizer {
         int nearestToNorthPole = oneOpt.getNearestNeighborIndexTest(3);
 
         assertEquals(4, nearestToNorthPole);
-    }    
+    }   
+
+    @Test
+    @DisplayName("bodorol: Total distance of tour is correctly computed")
+    public void testTourDistance() {
+        Places places = new Places();
+        places.add(southPole);
+        places.add(northPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+        oneOpt.initializeDistancesTest();
+
+        long tourLength = oneOpt.getTourDistanceTest();
+
+        assertEquals(6L, tourLength);
+    }   
+
+    @Test
+    @DisplayName("bodorol: Correct index into tour is returned")
+    public void testGetTourIndex() {
+        Places places = new Places();
+        places.add(northPole);
+        places.add(equatorEast);
+        places.add(equatorWest);
+        places.add(southPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+        oneOpt.initializeDistancesTest();
+        oneOpt.nearestNeighborTest();
+
+        int southPoleIndex = oneOpt.getTourIndexTest(3);
+        assertEquals(2, southPoleIndex);
+    }   
+
+    @Test
+    @DisplayName("bodorol: Tour has correct start")
+    public void testSetTourStart() {
+        Places places = new Places();
+        places.add(northPole);
+        places.add(equatorEast);
+        places.add(equatorWest);
+        places.add(southPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+
+        oneOpt.setTourStartTest(3);
+        Place tourStart = oneOpt.getPlaceFromTour(0);
+
+        assertEquals(southPole, tourStart);
+
+    }   
+
+    @Test
+    @DisplayName("bodorol: Setting tour start correctly swaps positions")
+    public void testSetTourStartSwapPosition() {
+        Places places = new Places();
+        places.add(northPole);
+        places.add(equatorEast);
+        places.add(equatorWest);
+        places.add(southPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+
+        oneOpt.setTourStartTest(3);
+        Place tourEnd = oneOpt.getPlaceFromTour(3);
+
+        assertEquals(northPole, tourEnd);
+    }   
 }

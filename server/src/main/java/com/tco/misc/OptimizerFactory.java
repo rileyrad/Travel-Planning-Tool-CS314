@@ -9,7 +9,7 @@ public class OptimizerFactory extends TourConstruction {
 
     public TourConstruction get(int N, Double response) {
         TourConstruction optimizer;
-        if (n >= 500 || n == 0 || response == 0) {
+        if (N >= 500 || N == 0 || response == 0) {
             optimizer = new NoOptimizer();
             log.info("NoOptimizer was selected.");
         } else {

@@ -47,7 +47,7 @@ public class DistancesRequest extends Request {
 
     private void setDistanceCalculator() throws BadRequestException{
         calculator = CalculatorFactory.get(formula);
-    }
+            }
 
     /* The following methods exist only for testing purposes and are not used
      during normal execution, including the constructor. */
@@ -58,6 +58,12 @@ public class DistancesRequest extends Request {
         earthRadius = 3959.0;
      }
 
+     public DistancesRequest(Places placeList) {
+        this.requestType = "distances";
+        places = placeList;
+        earthRadius = 3959.0;   
+     }
+
      public DistanceCalculator getDistanceCalculator() {
         return calculator;
      }
@@ -66,7 +72,7 @@ public class DistancesRequest extends Request {
         return distances;
      }
 
-     public void addPlace(Place place) {
+    public void addPlace(Place place) {
         places.add(place);
      }
 

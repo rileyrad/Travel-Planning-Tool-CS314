@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "6809cd23-b99b-48dd-b7c3-1c72213bea9d",
+		"_postman_id": "7f25aab3-a77a-4e4b-9c9d-6590157ad0e6",
 		"name": "tour",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "25883428-6809cd23-b99b-48dd-b7c3-1c72213bea9d"
+		"_exporter_id": "32999696"
 	},
 	"item": [
 		{
@@ -12,27 +12,46 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "54a16b09-8210-4fea-88b5-0b3d61c8e8a6",
 						"exec": [
-							"pm.test(\"Response is HTTP404 status\", () => {",
-							"    pm.response.to.have.status(404);",
-							"});",
-							""
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response should be in JSON format\", function () {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains the expected places\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"\r",
+							"    let expectedPlaces = [\r",
+							"        {\"name\":\"Denver\", \"latitude\": \"39.7\", \"longitude\": \"-105.0\", \"notes\":\"The big city\"},\r",
+							"        {\"name\":\"Boulder\", \"latitude\": \"40.0\", \"longitude\": \"-105.4\", \"notes\":\"Home of CU\"},\r",
+							"        {\"name\":\"Fort Collins\", \"latitude\": \"40.6\", \"longitude\": \"-105.1\", \"notes\":\"Home of CSU\"}\r",
+							"    ];\r",
+							"\r",
+							"    expectedPlaces.forEach(function(expectedPlace) {\r",
+							"        pm.expect(jsonData.places).to.deep.include(expectedPlace);\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response structure matches expected format\", function () {\r",
+							"    let responseBody = pm.response.json();\r",
+							"    pm.expect(responseBody).to.have.keys(\"requestType\", \"earthRadius\", \"response\", \"formula\", \"places\");\r",
+							"    pm.expect(responseBody.places).to.be.an('array');\r",
+							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
-			"id": "f5d78f18-f7cd-4d3b-a134-38468cab649a",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"requestType\": \"tour\"\n}",
+					"raw": "{\r\n  \"requestType\" : \"tour\",\r\n  \"earthRadius\" : 3959.0,\r\n  \"response\" : 1.0,\r\n  \"formula\" : \"vincenty\",\r\n  \"places\" : [\r\n    {\"name\":\"Denver\", \"latitude\": \"39.7\", \"longitude\": \"-105.0\", \"notes\":\"The big city\"},\r\n    {\"name\":\"Boulder\", \"latitude\": \"40.0\", \"longitude\": \"-105.4\", \"notes\":\"Home of CU\"},\r\n    {\"name\":\"Fort Collins\", \"latitude\": \"40.6\", \"longitude\": \"-105.1\", \"notes\":\"Home of CSU\"}\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

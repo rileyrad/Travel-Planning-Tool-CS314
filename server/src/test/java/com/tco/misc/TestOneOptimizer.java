@@ -258,4 +258,69 @@ public class TestOneOptimizer {
 
         assertEquals(northPole, tourEnd);
     }   
+
+    @Test
+    @DisplayName("bodorol: Correct places are returned")
+    public void testTourToPlaces() {
+        Places places = new Places();
+        places.add(northPole);
+        places.add(equatorEast);
+        places.add(equatorWest);
+        places.add(southPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+
+        Places fromTour = oneOpt.tourToPlacesTest();
+
+        assertIterableEquals(places, fromTour);
+    }  
+
+    
+    @Test
+    @DisplayName("bodorol: Start stays the same after performing nearest neighbor")
+    public void testTourToPlacesStartPosition() {
+        Places places = new Places();
+        places.add(equatorEast);
+        places.add(northPole);
+        places.add(southPole);
+        places.add(equatorWest);
+        places.add(equatorMiddle);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+        oneOpt.initializeDistancesTest();
+        oneOpt.constructTest();
+
+        Place startPlace = oneOpt.getPlaceFromPlaces(0);
+
+        assertEquals(equatorEast, startPlace);
+    }  
+
+    @Test
+    @DisplayName("bodorol: Optimal tour is provided when tour consists of two alternating places")
+    public void testConstructReturnsShorterTourMultipleOccurences() {
+        Places places = new Places();
+        places.add(northPole);
+        places.add(southPole);
+        places.add(northPole);
+        places.add(southPole);
+        places.add(northPole);
+        places.add(southPole);
+        places.add(northPole);
+        places.add(southPole);
+        places.add(northPole);
+        places.add(southPole);
+
+        oneOpt.setPlaces(places);
+        oneOpt.initializeTourTest();
+        oneOpt.initializeDistancesTest();
+        oneOpt.constructTest();
+        oneOpt.initializeTourTest();
+        oneOpt.initializeDistancesTest();
+
+        long tourLength = oneOpt.getTourDistanceTest();
+
+        assertEquals(6L, tourLength);
+    }
 }

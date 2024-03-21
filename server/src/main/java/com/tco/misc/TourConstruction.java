@@ -12,7 +12,30 @@ public abstract class TourConstruction {
     private long[][] distances;
 
     public Places construct(Places places, double radius, String formula, double response) throws BadRequestException {
-        return null;
+		this.places = places;
+        this.radius = radius;
+        this.formula = formula;
+
+        initializeTour();
+        initializeDistances();
+
+        long shortestDistance = getTourDistance();
+        int[] shortestTour = tour.clone();
+
+        for (int i = 0; i < places.size(); i++) {
+            setTourStart(i);
+            nearestNeighbor();
+
+            long tourDistance = getTourDistance();
+
+            if (tourDistance < shortestDistance) {
+                shortestDistance = tourDistance;
+                shortestTour = tour.clone();
+            }
+        }
+
+        tour = shortestTour;
+        return tourToPlaces();
     }
 
     public void improve() {}
@@ -43,12 +66,25 @@ public abstract class TourConstruction {
         }
     }
 
+    private Places tourToPlaces() {
+        int startIndex = getTourIndex(0);
+        Places optimizedPlaces = new Places();
+
+        for (int i = 0; i < tour.length; i++) {
+            int tourIndex = (startIndex + i) % tour.length;
+            int placesIndex = tour[tourIndex];
+            Place nextPlace = places.get(placesIndex);
+            optimizedPlaces.add(nextPlace);
+        }
+
+        return optimizedPlaces;
+    }
+
     private long getTourDistance() {
         long totalDistance = 0;
 
         for (int i = 0; i < tour.length - 1; i++) {
             totalDistance += getDistance(i, i + 1);
-            System.out.println("Total: " + totalDistance);
         }
 
         totalDistance += getDistance(tour.length - 1, 0);
@@ -164,6 +200,10 @@ public abstract class TourConstruction {
         return getNearestNeighborIndex(index);
      }
 
+     public Places tourToPlacesTest() {
+        return tourToPlaces();
+     }
+
      public long getTourDistanceTest() {
         return getTourDistance();
      }
@@ -174,5 +214,13 @@ public abstract class TourConstruction {
 
      public void setTourStartTest(int placesIndex) {
         setTourStart(placesIndex);
+     }
+
+     public void constructTest() {
+        try {
+            places = construct(places, radius, formula, 1.0);
+        } catch (Exception e) {
+
+        }
      }
 }

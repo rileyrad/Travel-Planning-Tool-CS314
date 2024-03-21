@@ -15,7 +15,8 @@ public class TourRequest extends Request {
 
     @Override
     public void buildResponse() throws BadRequestException {
-        TourConstruction optimizer = new NoOptimizer();
+        OptimizerFactory optimizerFactory = new OptimizerFactory();
+        TourConstruction optimizer = optimizerFactory.get(places.size(), response);
         places = optimizer.construct(places, earthRadius, formula, response);
         log.trace("buildResponse -> {}", this);
     }

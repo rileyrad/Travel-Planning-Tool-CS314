@@ -4,6 +4,7 @@ import com.tco.misc.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.List;
 
 public class FindRequest extends Request {
     private static final transient Logger log = LoggerFactory.getLogger(FindRequest.class);

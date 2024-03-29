@@ -6,7 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FindRequest extends Request {
-    
+    private static final transient Logger log = LoggerFactory.getLogger(FindRequest.class);
+    private String match;
+    private List<String> type;
+    private List<String> where;
+    private Integer limit;
+    private Integer found;
+    private Places places;
+
     @Override
     public void buildResponse() throws BadRequestException {
         

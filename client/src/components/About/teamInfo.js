@@ -49,7 +49,7 @@ export const memberData = [
     },
     {
         name: "Mark Antwi",
-        bio: "",
+        bio: "My name is Mark and I'm a third-year CSU student studying computer science. In my free time I enjoy snowboarding, gaming, and music. My goal in this course is to get more familiar with GitHub and Web Development, as well as get more familiar with a professional environment that can translate to the real world.",
         homeTown: "Arvada, CO",
         imagePath: markPic
     },

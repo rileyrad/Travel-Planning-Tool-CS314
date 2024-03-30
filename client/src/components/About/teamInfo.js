@@ -5,6 +5,7 @@ import zaePic from "@static/images/Zae.jpg"
 import rileyPic from "@static/images/RileyPortrait.jpg";
 import gabePic from "@static/images/Gabe.jpg"
 import teamPic from "@static/images/Crypto-v-1.jpg";
+import markPic from "@static/images/Mark.jpg";
 
 
 export const teamData =
@@ -45,5 +46,11 @@ export const memberData = [
         bio: "I am experienced with programming in Java, and Python and familiar with common Git and GitHub practices. In this course I hope to learn a lot about collaboration in an industry environment. In my free time I enjoy snowboarding, mountain biking and gaming with my friends. An interesting fact about me is that I have been a snowboard instructor for the past 7 years.",
         homeTown: "Breckenridge, CO",
         imagePath: gabePic
+    },
+    {
+        name: "Mark Antwi",
+        bio: "",
+        homeTown: "Arvada, CO",
+        imagePath: markPic
     },
 ];

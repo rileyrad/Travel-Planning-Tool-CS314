@@ -1,5 +1,11 @@
 package com.tco.requests;
 
-public class NearRequest {
+import com.tco.misc.BadRequestException;
+
+public class NearRequest extends Request {
     
+    @Override
+    public void buildResponse() throws BadRequestException {
+
+    }
 }

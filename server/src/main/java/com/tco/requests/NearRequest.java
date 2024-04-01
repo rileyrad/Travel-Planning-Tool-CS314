@@ -12,7 +12,7 @@ public class NearRequest extends Request {
     private Double earthRadius;
     private Integer limit;
     private Places places;
-    private Distances distance;
+    private Distances distances;
     
     @Override
     public void buildResponse() throws BadRequestException {

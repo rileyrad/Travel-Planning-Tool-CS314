@@ -21,4 +21,7 @@ public class GeographicLocations {
     public Distances distances(){
         return null;
     }
+    public Integer found(){
+        return null;
+    }
 }

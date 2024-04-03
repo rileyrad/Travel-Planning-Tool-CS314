@@ -6,6 +6,7 @@ public class Select {
     static String match(String match, int limit) {
         match = "%" + match + "%";
         String where = " WHERE world.name LIKE " + match
+                    + " OR world.id LIKE " + match
                     + " OR region.name LIKE " + match
                     + " OR world.municipality LIKE " + match
                     + " OR country.name LIKE " + match;

@@ -7,7 +7,7 @@ public class Select {
         match = "%" + match + "%";
         String where = " WHERE world.name LIKE " + match
                     + " OR region.name LIKE " + match
-                    + " OR municipality.name LIKE " + match
+                    + " OR world.municipality LIKE " + match
                     + " OR country.name LIKE " + match;
         return statement(where, " LIMIT " + limit);
     }

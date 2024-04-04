@@ -1,16 +1,23 @@
 package com.tco.misc;
 
 public class Select {
-    private static final String COLUMNS = "world.name";
+    private static final String COLUMNS = "world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country";
 
     static String match(String match, int limit) {
-        match = "%" + match + "%";
-        String where = " WHERE world.name LIKE " + match
+        String where;
+        if ("".equals(match)) {
+            where = " ORDER BY RAND()";
+        } else {
+            match = "%" + match + "%";
+            where = " WHERE world.name LIKE " + match
                     + " OR world.id LIKE " + match
                     + " OR region.name LIKE " + match
                     + " OR world.municipality LIKE " + match
                     + " OR country.name LIKE " + match;
-        return statement(where, " LIMIT " + limit);
+        }
+
+        
+        return statement(where, getLimit(limit));
     }
 
     static String statement(String where, String limit) {
@@ -22,5 +29,13 @@ public class Select {
                 + where
                 + limit
                 + " ;";
+    }
+
+    private static String getLimit(int limit) {
+        if (limit == 0) {
+            limit = 100;
+        }
+
+        return " LIMIT " + limit;
     }
 }

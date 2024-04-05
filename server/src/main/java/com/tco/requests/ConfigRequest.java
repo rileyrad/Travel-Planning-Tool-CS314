@@ -18,6 +18,7 @@ public class ConfigRequest extends Request {
     public void buildResponse() {
         serverName = "t17 Crypto Wizards";
         features = new ArrayList<>();
+        formulae = new ArrayList<>();
         features.add("config");
         features.add("distances");
         features.add("tour");

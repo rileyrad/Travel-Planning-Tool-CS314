@@ -30,13 +30,13 @@ public class GeographicLocations {
         return null;
     }
 
-    public Integer found(String match) throw Exception {
+    public Integer found(String match) throws Exception {
         String sql = Select.found(match);
 		try (
             // connect to the database and query
-            Connection conn = DriverManager.getConnection(Credential.url(), Credential.USER, Credential.PASSWORD);
+            Connection conn = DriverManager.getConnection(this.url(), this.USER, this.PASSWORD);
             Statement query = conn.createStatement();
-            ResultSet results = query.executeQuery(sql)
+            ResultSet results = query.executeQuery(sql);
 		) {
 			return count(results);
 		} catch (Exception e) {

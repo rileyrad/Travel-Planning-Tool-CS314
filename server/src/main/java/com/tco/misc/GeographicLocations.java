@@ -24,4 +24,18 @@ public class GeographicLocations {
     public Integer found(){
         return null;
     }
+
+    private double getLongitudeOffset(Place place, double distance, long earthRadius) {
+        try {
+            DistanceCalculator calculator = CalculatorFactory.get("vincenty");
+            double offsetLon = Double.parseDouble(place.get("longitude")) + 1;
+            Place offsetPlace = new Place(place.get("latitude"), "" + offsetLon);
+
+            long offsetDistance = calculator.between(place, offsetPlace, earthRadius);
+
+            return distance / offsetDistance;
+        } catch (Exception e) {
+            return 0;
+        }
+    }
 }

@@ -10,6 +10,13 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 
 public class GeographicLocations {
+    // shared user with read-only access
+    final static String USER = "cs314-db";
+    final static String PASSWORD = "eiK5liet1uej";
+    // connection information when using port forwarding from localhost
+    final static String URL = "jdbc:mariadb://127.0.0.1:56247/cs314";
+
+
     public Places find(String match, List<String> type, List<String> where, Integer limit, Integer found, Places places) {
         return null;
     }
@@ -37,5 +44,9 @@ public class GeographicLocations {
         } catch (Exception e) {
             return 0;
         }
+    }
+
+    static String url() {
+        return URL;
     }
 }

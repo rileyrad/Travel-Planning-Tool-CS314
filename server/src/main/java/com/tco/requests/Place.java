@@ -24,6 +24,14 @@ public class Place extends HashMap<String,String> implements GeographicCoordinat
         return stringToRadian(this.get("latitude"));
     }
 
+    public Double lonDegrees() {
+        return Double.parseDouble(this.get("longitude"));
+    }
+
+    public Double latDegrees() {
+        return Double.parseDouble(this.get("latitude"));
+    }
+
     private Double stringToRadian(String latLon){
         Double toDouble = Double.parseDouble(latLon);
         return toRadians(toDouble);

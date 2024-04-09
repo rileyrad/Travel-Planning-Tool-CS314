@@ -46,6 +46,13 @@ public class GeographicLocations {
         }
     }
 
+    private static Integer count(ResultSet results) throws Exception {
+        if (results.next()) {
+            return results.getInt("count");
+        }
+        throw new Exception("No count results in found query.");
+    }
+
     static String url() {
         return URL;
     }

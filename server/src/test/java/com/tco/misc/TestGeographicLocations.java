@@ -21,4 +21,10 @@ public class TestGeographicLocations {
         String url = "jdbc:mariadb://127.0.0.1:56247/cs314";
         assertEquals(geoLocations.url(), url);
     }
+
+    @Test
+    @DisplayName("rileyr3: test count()")
+    public void testCount() {
+        
+    }
 }

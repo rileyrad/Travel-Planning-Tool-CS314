@@ -20,7 +20,7 @@ public class Select {
         return statement(where, getLimit(limit));
     }
 
-    static String statement(String where, String limit) {
+    public static String statement(String where, String limit) {
         return "SELECT " + COLUMNS
                 + " FROM world "
                 + " INNER JOIN continent ON world.continent = continent.id"

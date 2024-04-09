@@ -25,6 +25,11 @@ public class TestGeographicLocations {
     @Test
     @DisplayName("rileyr3: test count()")
     public void testCount() {
-        
+        ResultSet resultSetMock = mock(ResultSet.class);
+        when(resultSetMock.next()).thenReturn(true);
+        when(resultSetMock.getInt("count")).thenReturn(1);
+
+        int result = geoLocations.database.count(resultSetMock);
+        assertEquals(1, result);
     }
 }

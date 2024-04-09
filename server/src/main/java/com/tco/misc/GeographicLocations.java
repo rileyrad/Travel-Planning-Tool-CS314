@@ -31,7 +31,7 @@ public class GeographicLocations {
     }
 
     public Integer found(String match) throws Exception {
-        String sql = Select.found(match);
+        String sql = Select.statement(match, "");
 		try (
             // connect to the database and query
             Connection conn = DriverManager.getConnection(this.url(), this.USER, this.PASSWORD);
@@ -58,7 +58,7 @@ public class GeographicLocations {
         }
     }
 
-    private static Integer count(ResultSet results) throws Exception {
+    public static Integer count(ResultSet results) throws Exception {
         if (results.next()) {
             return results.getInt("count");
         }

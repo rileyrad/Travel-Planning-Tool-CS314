@@ -35,7 +35,11 @@ public class Select {
         return statement(where, getLimit(limit));
     }
 
-    public static String statement(String where, String limit) {
+    static String found(String match) {
+        return statement(match, "");
+    }
+
+    static String statement(String where, String limit) {
         return "SELECT " + COLUMNS
                 + " FROM world"
                 + " INNER JOIN continent ON world.continent = continent.id"

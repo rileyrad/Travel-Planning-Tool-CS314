@@ -31,7 +31,7 @@ public class GeographicLocations {
     }
 
     public Integer found(String match) throws Exception {
-        String sql = Select.statement(match, "");
+        String sql = Select.found(match);
 		try (
             // connect to the database and query
             Connection conn = DriverManager.getConnection(this.url(), this.USER, this.PASSWORD);

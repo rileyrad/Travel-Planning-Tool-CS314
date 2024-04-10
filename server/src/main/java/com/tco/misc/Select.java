@@ -21,7 +21,7 @@ public class Select {
         
         return statement(where, getLimit(limit));
     }
-
+  
     static String near(Place center, double latOffset, double lonOffset, int limit) {
         double latLowerBound = center.latDegrees() - latOffset;
         double latUpperBound = center.latDegrees() + latOffset;
@@ -35,7 +35,7 @@ public class Select {
         return statement(where, getLimit(limit));
     }
 
-    private static String statement(String where, String limit) {
+    public static String statement(String where, String limit) {
         return "SELECT " + COLUMNS
                 + " FROM world"
                 + " INNER JOIN continent ON world.continent = continent.id"

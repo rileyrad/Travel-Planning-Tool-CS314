@@ -12,7 +12,7 @@ public class TestSelect {
     @Test
     @DisplayName("bodorol: Match returns correct query")
     public void testMatchWithPlace(){
-        String match = Select.match("airport", 10);
+        String match = Select.match(GeographicLocations.COLUMNS, "airport", 10);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"
@@ -32,7 +32,7 @@ public class TestSelect {
     @Test
     @DisplayName("bodorol: Match returns query with random places")
     public void testMatchWithEmptyPlace(){
-        String match = Select.match("", 10);
+        String match = Select.match(GeographicLocations.COLUMNS, "", 10);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"
@@ -48,7 +48,7 @@ public class TestSelect {
     @Test
     @DisplayName("bodorol: Match returns query with limit of 100")
     public void testMatchWithNoLimit(){
-        String match = Select.match("airport", 0);
+        String match = Select.match(GeographicLocations.COLUMNS, "airport", 0);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"
@@ -69,7 +69,7 @@ public class TestSelect {
     @DisplayName("bodorol: Find returns query with limit of 100")
     public void testFindWithNoLimit(){
         Place origin = new Place("0.0", "0.0");
-        String match = Select.near(origin, 0.5, 0.5, 10);
+        String match = Select.near(GeographicLocations.COLUMNS, origin, 0.5, 0.5, 10);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"
@@ -86,7 +86,7 @@ public class TestSelect {
     @DisplayName("bodorol: Find returns correct query")
     public void testFindWithPlace(){
         Place origin = new Place("0.0", "0.0");
-        String match = Select.near(origin, 0.5, 0.5, 0);
+        String match = Select.near(GeographicLocations.COLUMNS, origin, 0.5, 0.5, 0);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"

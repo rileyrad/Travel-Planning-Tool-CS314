@@ -69,7 +69,8 @@ public class TestSelect {
     @DisplayName("bodorol: Find returns query with limit of 100")
     public void testFindWithNoLimit(){
         Place origin = new Place("0.0", "0.0");
-        String match = Select.near(GeographicLocations.COLUMNS, origin, 0.5, 0.5, 10);
+        Place offset = new Place("0.5", "0.5");
+        String match = Select.near(GeographicLocations.COLUMNS, origin, offset, 10);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"
@@ -86,7 +87,8 @@ public class TestSelect {
     @DisplayName("bodorol: Find returns correct query")
     public void testFindWithPlace(){
         Place origin = new Place("0.0", "0.0");
-        String match = Select.near(GeographicLocations.COLUMNS, origin, 0.5, 0.5, 0);
+        Place offset = new Place("0.5", "0.5");
+        String match = Select.near(GeographicLocations.COLUMNS, origin, offset, 0);
         String query = "SELECT world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country"
         + " FROM world"
         + " INNER JOIN continent ON world.continent = continent.id"

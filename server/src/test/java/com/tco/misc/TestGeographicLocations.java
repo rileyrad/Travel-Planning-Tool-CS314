@@ -11,6 +11,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
+import com.tco.requests.Place;
+import com.tco.requests.Places;
+import com.tco.requests.Distances;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -58,5 +62,54 @@ public class TestGeographicLocations {
 
         int result = geoLocations.count(resultSetMock);
         assertEquals(1, result);
+    }
+
+    @Test
+    @DisplayName("bodorol: Distances returns correct distances")
+    public void testDistances() throws Exception {
+        Place northPole = new Place("90", "0");
+        Place southPole = new Place("-90", "0");
+        Place equatorMiddle = new Place("0", "0");
+        Place equatorWest = new Place("0", "-90");
+        Place equatorEast = new Place("0", "90");
+        Places places = new Places();
+        places.add(southPole);
+        places.add(equatorMiddle);
+        places.add(equatorWest);
+        places.add(equatorEast);
+
+        Distances distances = geoLocations.distances(northPole, places, 1);
+
+        assertEquals(3, distances.get(0));
+    }
+
+    @Test
+    @DisplayName("bodorol: Distances returns correct size")
+    public void testDistancesSize() throws Exception {
+        Place northPole = new Place("90", "0");
+        Place southPole = new Place("-90", "0");
+        Place equatorMiddle = new Place("0", "0");
+        Place equatorWest = new Place("0", "-90");
+        Place equatorEast = new Place("0", "90");
+        Places places = new Places();
+        places.add(southPole);
+        places.add(equatorMiddle);
+        places.add(equatorWest);
+        places.add(equatorEast);
+
+        Distances distances = geoLocations.distances(northPole, places, 1);
+
+        assertEquals(4, distances.size());
+    }
+
+    @Test
+    @DisplayName("bodorol: Distances returns empty list")
+    public void testDistancesNoPlaces() throws Exception {
+        Places places = new Places();
+        Place northPole = new Place("90", "0");
+
+        Distances distances = geoLocations.distances(northPole, places, 1);
+
+        assertTrue(distances.isEmpty());
     }
 }

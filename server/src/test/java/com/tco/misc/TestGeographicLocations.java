@@ -29,7 +29,7 @@ public class TestGeographicLocations {
     @Test
     @DisplayName("rileyr3: test correct URL.")
     public void testURL() {
-        String url = "jdbc:mariadb://127.0.0.1:56247/cs314";
+        String url = "jdbc:mariadb://faure.cs.colostate.edu/cs314";
         assertEquals(geoLocations.url(), url);
     }
 

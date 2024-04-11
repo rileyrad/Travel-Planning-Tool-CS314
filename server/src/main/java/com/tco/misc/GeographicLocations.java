@@ -26,9 +26,47 @@ public class GeographicLocations {
         this.formula = formula;
     }
 
+    private String getLimit(Integer limit) {
+        if (limit == null || limit == 0) {
+            limit = 100;
+        }
+        return " LIMIT " + limit;
+    }
 
-    public Places find(String match, List<String> type, List<String> where, Integer limit) {
-        return null;
+    public Places find(String match, List<String> type, List<String> where, Integer limit) throws Exception {
+        String whereClause = buildWhereClause(match, type, where);
+        String sql = Select.statement(COLUMNS, whereClause, getLimit(limit));
+        return places(sql);
+    }
+
+    private String buildWhereClause(String match, List<String> type, List<String> where) {
+        StringBuilder whereBuilder = new StringBuilder();
+    
+        if (!match.isEmpty()) {
+            whereBuilder.append(" AND (world.name LIKE '%").append(match).append("%'")
+                    .append(" OR world.id LIKE '%").append(match).append("%'")
+                    .append(" OR region.name LIKE '%").append(match).append("%'")
+                    .append(" OR world.municipality LIKE '%").append(match).append("%'")
+                    .append(" OR country.name LIKE '%").append(match).append("%')");
+        }
+    
+        if (type != null && !type.isEmpty()) {
+            whereBuilder.append(" AND world.type IN (");
+            for (String t : type) {
+                whereBuilder.append("'").append(t).append("', ");
+            }
+            whereBuilder.deleteCharAt(whereBuilder.length() - 1); // Remove the last comma
+            whereBuilder.deleteCharAt(whereBuilder.length() - 1); // Remove the extra space
+            whereBuilder.append(")");
+        }
+    
+        if (where != null && !where.isEmpty()) {
+            for (String condition : where) {
+                whereBuilder.append(" AND ").append(condition);
+            }
+        }
+    
+        return whereBuilder.toString();
     }
     
     public Places near(Place place, Long distance, Long earthRadius, Long limit) {

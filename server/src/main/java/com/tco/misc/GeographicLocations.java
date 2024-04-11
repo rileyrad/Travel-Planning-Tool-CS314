@@ -32,8 +32,8 @@ public class GeographicLocations {
     }
 
     public Integer found(String match) throws Exception {
-        String sql = Select.statement(COLUMNS, match, "");
-		ResultSet results = performQuery(sql);
+        String sql = Select.found(match);
+		    ResultSet results = performQuery(sql);
         return count(results);
     }
 

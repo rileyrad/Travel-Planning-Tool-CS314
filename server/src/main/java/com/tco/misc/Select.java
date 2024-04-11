@@ -34,6 +34,10 @@ public class Select {
         return statement(data, where, getLimit(limit));
     }
 
+    static String found(String match) {
+        return match("COUNT(*) AS count", match, 0);
+    }
+
     public static String statement(String data, String where, String limit) {
         return "SELECT " + data
                 + " FROM world"

@@ -15,8 +15,8 @@ public class GeographicLocations {
     final static String USER = "cs314-db";
     final static String PASSWORD = "eiK5liet1uej";
     // connection information when using port forwarding from localhost
-    final static String URL = "jdbc:mariadb://127.0.0.1:56247/cs314";
-    final static String COLUMNS = "world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country";
+    final static String URL = "jdbc:mariadb://faure.cs.colostate.edu/cs314";
+    final static String COLUMNS = "world.id,world.name,world.latitude,world.longitude,world.altitude,world.type";
     private String formula;
 
     public GeographicLocations() {
@@ -48,6 +48,8 @@ public class GeographicLocations {
                     .append(" OR region.name LIKE '%").append(match).append("%'")
                     .append(" OR world.municipality LIKE '%").append(match).append("%'")
                     .append(" OR country.name LIKE '%").append(match).append("%')");
+        } else {
+            whereBuilder.append(" ORDER BY RAND()");
         }
     
         if (type != null && !type.isEmpty()) {
@@ -112,7 +114,7 @@ public class GeographicLocations {
         while (results.next()) {
             Place place = new Place();
             for (String col : cols) {
-                place.put(col, results.getString(col));
+                place.put(col.substring(col.lastIndexOf(".") + 1), results.getString(col));
             }
             place.put("index", String.format("%d", ++count));
             places.add(place);

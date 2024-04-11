@@ -21,11 +21,11 @@ public class Select {
         return statement(data, where, getLimit(limit));
     }
   
-    static String near(String data, Place center, double latOffset, double lonOffset, int limit) {
-        double latLowerBound = center.latDegrees() - latOffset;
-        double latUpperBound = center.latDegrees() + latOffset;
-        double lonLowerBound = center.lonDegrees() - lonOffset;
-        double lonUpperBound = center.lonDegrees() + lonOffset;
+    static String near(String data, Place center, Place offset, int limit) {
+        double latLowerBound = center.latDegrees() - offset.latDegrees();
+        double latUpperBound = center.latDegrees() + offset.latDegrees();
+        double lonLowerBound = center.lonDegrees() - offset.lonDegrees();
+        double lonUpperBound = center.lonDegrees() + offset.lonDegrees();
 
         String where =  " WHERE" 
         + " latitude BETWEEN " + latLowerBound + " AND " + latUpperBound 

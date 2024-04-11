@@ -17,9 +17,17 @@ public class GeographicLocations {
     // connection information when using port forwarding from localhost
     final static String URL = "jdbc:mariadb://127.0.0.1:56247/cs314";
     final static String COLUMNS = "world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country";
+    private String formula;
+
+    public GeographicLocations() {
+    }
+
+    public GeographicLocations(String formula) {
+        this.formula = formula;
+    }
 
 
-    public Places find(String match, List<String> type, List<String> where, Integer limit, Integer found, Places places) {
+    public Places find(String match, List<String> type, List<String> where, Integer limit) {
         return null;
     }
     
@@ -27,8 +35,16 @@ public class GeographicLocations {
         return null;
     }
 
-    public Distances distances() {
-        return null;
+    public Distances distances(Place place, Places places, long earthRadius) throws BadRequestException {
+        Distances distances = new Distances();
+        DistanceCalculator calculator = CalculatorFactory.get(formula);
+
+        for (int i = 0; i < places.size(); i++) {
+            long distance = calculator.between(place, places.get(i), earthRadius);
+            distances.add(distance);
+        }
+
+        return distances;
     }
 
     public Integer found(String match) throws Exception {

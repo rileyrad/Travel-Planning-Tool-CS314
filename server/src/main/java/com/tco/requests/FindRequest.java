@@ -17,6 +17,13 @@ public class FindRequest extends Request {
 
     @Override
     public void buildResponse() throws BadRequestException {
-        
+        GeographicLocations geoLocations = new GeographicLocations();
+        try {
+            places = geoLocations.find(match, type, where, limit);
+            found = geoLocations.found(match);
+        } catch (Exception e) {
+            throw new BadRequestException();
+        }
+        log.trace("buildResponse -> {}", this);
     }
 }

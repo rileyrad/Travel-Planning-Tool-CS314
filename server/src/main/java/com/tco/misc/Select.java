@@ -3,9 +3,8 @@ package com.tco.misc;
 import com.tco.requests.Place;
 
 public class Select {
-    private static final String COLUMNS = "world.id, world.name, world.latitude, world.longitude, world.altitude, world.type, country.name AS country";
 
-    static String match(String match, int limit) {
+    static String match(String data, String match, int limit) {
         String where;
         if ("".equals(match)) {
             where = " ORDER BY RAND()";
@@ -19,10 +18,10 @@ public class Select {
         }
 
         
-        return statement(where, getLimit(limit));
+        return statement(data, where, getLimit(limit));
     }
   
-    static String near(Place center, double latOffset, double lonOffset, int limit) {
+    static String near(String data, Place center, double latOffset, double lonOffset, int limit) {
         double latLowerBound = center.latDegrees() - latOffset;
         double latUpperBound = center.latDegrees() + latOffset;
         double lonLowerBound = center.lonDegrees() - lonOffset;
@@ -32,11 +31,11 @@ public class Select {
         + " latitude BETWEEN " + latLowerBound + " AND " + latUpperBound 
         + " AND longitude BETWEEN " + lonLowerBound + " AND " + lonUpperBound;
 
-        return statement(where, getLimit(limit));
+        return statement(data, where, getLimit(limit));
     }
 
-    public static String statement(String where, String limit) {
-        return "SELECT " + COLUMNS
+    public static String statement(String data, String where, String limit) {
+        return "SELECT " + data
                 + " FROM world"
                 + " INNER JOIN continent ON world.continent = continent.id"
                 + " INNER JOIN country ON world.iso_country = country.id"

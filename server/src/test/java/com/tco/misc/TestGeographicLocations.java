@@ -112,4 +112,39 @@ public class TestGeographicLocations {
 
         assertTrue(distances.isEmpty());
     }
+
+    @Test
+    @DisplayName("mantwi3: nearFilter returns filtered list")
+    public void testNearFilter() throws Exception {
+        Places places = new Places();
+        Place origin = new Place("0", "0");
+        Place placeOne = new Place("1", "0");
+        Place placeTwo = new Place("0", "1");
+        Place placeThree = new Place("3", "2");
+        places.add(placeOne);
+        places.add(placeTwo);
+        places.add(placeThree);
+
+        Places filteredList = geoLocations.nearFilter(places, 70L, 3959L, origin);
+
+        assertTrue(filteredList.size() == 2);
+    }
+
+    @Test
+    @DisplayName("mantwi3: nearFilter removes correct locations")
+    public void testNearFilterRemoval() throws Exception {
+        Places places = new Places();
+        Place origin = new Place("0", "0");
+        Place placeOne = new Place("1", "0");
+        Place placeTwo = new Place("0", "1");
+        Place placeThree = new Place("3", "2");
+        places.add(placeOne);
+        places.add(placeTwo);
+        places.add(placeThree);
+
+        Places filteredList = geoLocations.nearFilter(places, 250L, 3959L, origin);
+
+        assertTrue(filteredList.size() == 3);
+    }
+
 }

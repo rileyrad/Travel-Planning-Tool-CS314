@@ -70,6 +70,19 @@ public class GeographicLocations {
     
         return whereBuilder.toString();
     }
+
+    public Places nearFilter(Places places, Long maxDistance, Long earthRadius, Place center) throws BadRequestException{
+        DistanceCalculator calculator = CalculatorFactory.get(formula);
+        Places filteredPlaces = new Places();
+
+        for (int i = 0; i < places.size(); i++){
+            long distance = calculator.between(center, places.get(i), earthRadius);
+            if (distance < maxDistance){
+                filteredPlaces.add(places.get(i));
+            }
+        }
+        return filteredPlaces;
+    }
     
     public Places near(Place place, Long distance, Long earthRadius, Long limit) {
         return null;

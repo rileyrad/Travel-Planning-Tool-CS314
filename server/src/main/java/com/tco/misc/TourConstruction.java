@@ -131,7 +131,7 @@ public abstract class TourConstruction {
         return nearestNeighborIndex;
     }
 
-    private void swapElements(int index1, int index2) {
+    protected void swapElements(int index1, int index2) {
         int temp = tour[index1];
         tour[index1] = tour[index2];
         tour[index2] = temp;

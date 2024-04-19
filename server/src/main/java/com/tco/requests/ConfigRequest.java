@@ -13,6 +13,7 @@ public class ConfigRequest extends Request {
     private String serverName;
     private List<String> features;
     private List<String> formulae;
+    private List<String> type;
 
     @Override
     public void buildResponse() {

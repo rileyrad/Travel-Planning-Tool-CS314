@@ -85,7 +85,11 @@ public class GeographicLocations {
     }
     
     public Places near(Place place, Long distance, Long earthRadius, Long limit) {
-        Place offset = new Place();
+        DistanceCalculator calculator = CalculatorFactory.get("vincenty");
+        String offsetLat = Double.parseDouble(place.get("latitude")) + (distance / earthRadius);
+        String offsetLong = Double.parseDouble(place.get("longitude")) + (distance / earthRadius);
+
+        Place offset = new Place(offsetLat, offsetLong);
 
         String sql = Select.near(COLUMNS, place, offset, limit);
         Places nearPlaces = places(sql);

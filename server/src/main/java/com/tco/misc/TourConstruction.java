@@ -144,6 +144,10 @@ public abstract class TourConstruction {
 		return distances[firstCity][nextCity];
 	}
 
+    public int getTourLength() {
+        return tour.length;
+    }
+    
     /* The following methods exist only for testing purposes and are not used
      during normal execution, including the constructor. */
 

@@ -135,17 +135,20 @@ public class GeographicLocations {
         return places;
     }
 
-    private double getLongitudeOffset(Place place, double distance, long earthRadius) {
+    private Place getOffsetPlace(Place place, double distance, long earthRadius) {
         try {
             DistanceCalculator calculator = CalculatorFactory.get("vincenty");
             double offsetLon = Double.parseDouble(place.get("longitude")) + 1;
-            Place offsetPlace = new Place(place.get("latitude"), "" + offsetLon);
+            double offsetLat = Double.parseDouble(place.get("latitude")) + 1;
+            Place offsetLonPlace = new Place(place.get("latitude"), "" + offsetLon);
+            Place offsetLatPlace = new Place("" + offsetLat, place.get("longitude"));
 
-            long offsetDistance = calculator.between(place, offsetPlace, earthRadius);
+            long offsetLonDistance = calculator.between(place, offsetLonPlace, earthRadius);
+            long offsetLatDistance = calculator.between(place, offsetLatPlace, earthRadius);
 
-            return distance / offsetDistance;
+            return new Place("" + offsetLatDistance, "" + offsetLonDistance);
         } catch (Exception e) {
-            return 0;
+            return new Place("0", "0");
         }
     }
 

@@ -137,7 +137,7 @@ public abstract class TourConstruction {
         tour[index2] = temp;
     }
 	
-	private long getDistance(int index1, int index2) {
+	protected long getDistance(int index1, int index2) {
 		int firstCity = tour[index1];
 		int nextCity = tour[index2];
 		

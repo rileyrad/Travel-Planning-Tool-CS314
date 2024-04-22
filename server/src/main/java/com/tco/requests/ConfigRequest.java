@@ -20,6 +20,7 @@ public class ConfigRequest extends Request {
         serverName = "t17 Crypto Wizards";
         features = new ArrayList<>();
         formulae = new ArrayList<>();
+        type = new ArrayList<>();
         features.add("config");
         features.add("distances");
         features.add("tour");
@@ -27,6 +28,10 @@ public class ConfigRequest extends Request {
         formulae.add("vincenty");
         formulae.add("haversine");
         formulae.add("cosines");
+        type.add("airport");
+        type.add("balloonport");
+        type.add("heliport");
+        type.add("other");
         log.trace("buildResponse -> {}", this);
     }
 

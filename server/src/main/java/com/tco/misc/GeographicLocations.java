@@ -84,12 +84,8 @@ public class GeographicLocations {
         return filteredPlaces;
     }
     
-    public Places near(Place place, Long distance, Long earthRadius, Long limit) {
-
-        String offsetLat;
-        String offsetLong =  "" + getLongitudeOffset(place, distance, earthRadius);
-
-        Place offset = new Place(offsetLat,offsetLong);
+    public Places near(Place place, Long distance, Long earthRadius, int limit) throws Exception {
+        Place offset = getOffsetPlace(place, distance, earthRadius);
 
         String sql = Select.near(COLUMNS, place, offset, limit);
         Places nearPlaces = places(sql);

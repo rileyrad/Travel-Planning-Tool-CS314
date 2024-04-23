@@ -9,7 +9,7 @@ public class TwoOptimizer extends TourConstruction {
         while (improved) {
             improved = false;
             for (int i = 0; i < tourLength - 1; i++) {
-                for (int k = i + 1; k < tourLength; k++) {
+                for (int k = i + 1; k < tourLength - 1; k++) {
                     if (swapImproves(i, k)) {
                         twoOptSwap(i, k);
                         improved = true;
@@ -30,4 +30,9 @@ public class TwoOptimizer extends TourConstruction {
             k--;
         }
     }
+        /* The following methods exist only for testing purposes and are not used
+     during normal execution, including the constructor. */
+     public boolean testSwapImproves(int i, int k) {
+        return swapImproves(i, k);
+     }
 }

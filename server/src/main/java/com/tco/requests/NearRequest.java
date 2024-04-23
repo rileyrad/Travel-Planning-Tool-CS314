@@ -25,4 +25,33 @@ public class NearRequest extends Request {
         }
         log.trace("buildResponse -> {}", this);
     }
+
+    /* The following methods exist only for testing purposes and are not used
+     during normal execution, including the constructor. */
+    
+    public void setPlace(Place place) {
+        places.add(place);
+    }
+
+    public void setEarthRadius(Long earthRadius) {
+        this.earthRadius = earthRadius;
+    }
+
+    public void setDistance(Long dist){
+        this.distance = dist;
+    }
+
+    public void setLimit(Integer limit){
+        this.limit = limit;
+    }
+
+    public Places getPlaces(){
+        return places;
+    }
+
+    public NearRequest(){
+        this.requestType = "near";
+        places = new Places();
+        earthRadius = 3959L;
+    }
 }

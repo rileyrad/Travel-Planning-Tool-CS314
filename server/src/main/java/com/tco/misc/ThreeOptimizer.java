@@ -5,8 +5,9 @@ public class ThreeOptimizer extends TourConstruction {
     public void improve() {
     }
 
-    private int 3optReversals(int i, int j, int k) {
+    private int threeOptReversals(int i, int j, int k) {
         int reversal = 0;
+        
         if (getDistance(i, j) + getDistance(i + 1, j + 1) < getDistance(i, i + 1) + getDistance(j, j + 1)) {
             reversal = 1;
         }

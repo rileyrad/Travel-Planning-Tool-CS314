@@ -12,9 +12,12 @@ public class OptimizerFactory extends TourConstruction {
         if (N >= 500 || N == 0 || response == 0) {
             optimizer = new NoOptimizer();
             log.info("NoOptimizer was selected.");
-        } else {
+        } else if (N >= 300) {
             optimizer = new OneOptimizer();
             log.info("OneOptimizer was selected.");
+        } else {
+            optimizer = new TwoOptimizer();
+            log.info("TwoOptimizer was selected.");
         }
         return optimizer;
     }

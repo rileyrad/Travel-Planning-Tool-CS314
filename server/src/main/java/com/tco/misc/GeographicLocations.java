@@ -34,9 +34,14 @@ public class GeographicLocations {
     }
 
     public Places find(String match, List<String> type, List<String> where, Integer limit) throws Exception {
-        String whereClause = buildWhereClause(match, type, where);
-        String sql = Select.statement(COLUMNS, whereClause, getLimit(limit));
-        return places(sql);
+        if (limit >= 0) {
+            String whereClause = buildWhereClause(match, type, where);
+            String sql = Select.statement(COLUMNS, whereClause, getLimit(limit));
+            return places(sql);
+        } else {
+            Places place = new Places();
+            return place;
+        }
     }
 
     private String buildWhereClause(String match, List<String> type, List<String> where) {

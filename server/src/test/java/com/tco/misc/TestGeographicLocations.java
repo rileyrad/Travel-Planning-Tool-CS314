@@ -1,6 +1,8 @@
 package com.tco.misc;
 
 import java.lang.Exception;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -15,8 +17,7 @@ import com.tco.requests.Place;
 import com.tco.requests.Places;
 import com.tco.requests.Distances;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGeographicLocations {
     private GeographicLocations geoLocations;
@@ -147,4 +148,19 @@ public class TestGeographicLocations {
         assertTrue(filteredList.size() == 3);
     }
 
+    @Test
+    @DisplayName("rileyr3: test find() returns Places")
+    public void testFindReturnsPlaces() throws Exception {
+        String match = "A1B2C3D4";
+        List<String> type = new ArrayList();
+        type.add("airport");
+        type.add("balloonport");
+        type.add("heliport");
+        type.add("other");
+        List<String> where = new ArrayList();
+        where.add("Place1");
+
+        Places result = geoLocations.find(match, type, where, -1);
+        assertEquals(new Places(), result);
+    }
 }

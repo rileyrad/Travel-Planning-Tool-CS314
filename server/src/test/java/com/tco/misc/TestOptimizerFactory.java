@@ -44,4 +44,19 @@ public class TestOptimizerFactory {
         assertEquals(optFactory.get(N, response).getClass(), OneOptimizer.class);
     }
 
+    @Test
+    @DisplayName("gknudt: Test for two optimizer N=1")
+    public void testGetTwoOptimizerNIs1() {
+        response = 1;
+        int N = 1;
+        assertEquals(optFactory.get(N, response).getClass(), TwoOptimizer.class);
+    }
+    @Test
+    @DisplayName("gknudt: Test for two optimizer N=299")
+    public void testGetTwoOptimizerNIs299() {
+        response = 1;
+        int N = 299;
+        assertEquals(optFactory.get(N, response).getClass(), TwoOptimizer.class);
+    }
+
 }

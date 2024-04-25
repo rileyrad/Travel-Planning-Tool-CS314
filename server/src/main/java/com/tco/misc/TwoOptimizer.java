@@ -8,10 +8,10 @@ public class TwoOptimizer extends TourConstruction {
         int tourLength = getTourLength();
         while (improved) {
             improved = false;
-            for (int i = 0; i < tourLength - 1; i++) {
-                for (int k = i + 1; k < tourLength - 1; k++) {
+            for (int i = 0; i < tourLength - 3; i++) {
+                for (int k = i + 2; k < tourLength - 1; k++) {
                     if (swapImproves(i, k)) {
-                        twoOptSwap(i, k);
+                        twoOptSwap(i + 1, k);
                         improved = true;
                     }
                 }

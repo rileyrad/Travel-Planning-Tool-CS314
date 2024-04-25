@@ -160,7 +160,7 @@ public class TestGeographicLocations {
         List<String> where = new ArrayList();
         where.add("Place1");
 
-        Places result = geoLocations.find(match, type, where, 3);
-        assertSame(result, Places.class);
+        Places result = geoLocations.find(match, type, where, -1);
+        assertEquals(new Places(), result);
     }
 }

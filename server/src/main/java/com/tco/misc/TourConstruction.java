@@ -25,6 +25,7 @@ public abstract class TourConstruction {
         for (int i = 0; i < places.size(); i++) {
             setTourStart(i);
             nearestNeighbor();
+            improve();
 
             long tourDistance = getTourDistance();
 

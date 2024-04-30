@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "15bed82f-c675-4d2f-b3bd-95746125ea4a",
+		"name": "near",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32999696"
+	},
+	"item": [
+		{
+			"name": "base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response is HTTP200 status\", () => {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"requestType\": \"near\",\n  \"place\": {\"latitude\":\"40.5762\", \"longitude\":\"-105.0808\"},\n  \"distance\": 5,\n  \"earthRadius\": 3959,\n  \"formula\": \"vincenty\",\n  \"limit\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/near",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"near"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gknudt: Response contains expected places",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response contains expected place\", () => {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.places).to.be.an('array').that.is.not.empty;",
+							"    var place = jsonData.places[0];",
+							"    pm.expect(place.name).to.eql(\"Cass Field\");",
+							"    pm.expect(place.id).to.eql(\"00CO\");",
+							"    pm.expect(place.type).to.eql(\"small_airport\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"requestType\": \"near\",\n  \"place\": {\"latitude\":\"40.5762\", \"longitude\":\"-105.0808\"},\n  \"distance\": 50,\n  \"earthRadius\": 3959,\n  \"formula\": \"vincenty\",\n  \"limit\": 7\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/near",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"near"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "gknudt: Response time is acceptable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is acceptable\", () => {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"requestType\": \"near\",\n  \"place\": {\n    \"latitude\": \"40.5762\",\n    \"longitude\": \"-105.0808\"\n  },\n  \"distance\": 500,\n  \"earthRadius\": 3959,\n  \"formula\": \"vincenty\",\n  \"limit\": 1\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/api/near",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"near"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
